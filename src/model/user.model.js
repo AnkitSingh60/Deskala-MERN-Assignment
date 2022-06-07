@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
 
     email: {type:String, required:true, unique: true},
     password: {type:String, required:true},
+    phone: {type:Number, required:true},
     
 },
 {
@@ -13,6 +14,7 @@ const userSchema = new mongoose.Schema({
 }
 )
 
+//hash the password
 userSchema.pre("save", function(next) {
     if(! this.isModified("password")) return next();
     
@@ -25,6 +27,7 @@ userSchema.methods.checkPassword = function(password){
    return bcrypt.compareSync(password, this.password);
 }
 
+//user model
 const User = mongoose.model("user", userSchema);
 
 module.exports = User

@@ -11,10 +11,7 @@ const register = async (req,res) => {
         // if user is not found thn create user with data provided
         user = await User.create(req.body);
 
-        // then make the password more secure with hash password
-
         res.send(user)
-
 
     } catch (error) {
         console.log('error:', error)
