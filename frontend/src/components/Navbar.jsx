@@ -19,26 +19,35 @@ const Navbar = () => {
               Home
             </Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/login">
-              Login
+          {auth ? (
+            <li className="nav-item">
+              <Link className="nav-link" to="/addcandidate">
+                Add Candidate
+              </Link>
+            </li>
+          ) : (
+            ""
+          )}
+          {auth ? (
+            <Link onClick={logout} className="nav-link logout" to="/">
+              Logout
             </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/register">
-              Signup
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/addcandidate">
-              Add Candidate
-            </Link>
-          </li>
+          ) : (
+            <>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/register">
+                  Signup
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
-      <Link onClick={logout} className="nav-link logout" to="/">
-        Logout
-      </Link>
     </nav>
   );
 };
