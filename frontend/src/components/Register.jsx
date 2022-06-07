@@ -9,27 +9,25 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const submitHandler = async(e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     // console.log("Hey kiddo");
-    
-    let result = await fetch("http://localhost:5000/register",{
-      method: "POST",
-      body: JSON.stringify({email, phone, password}),
-      headers: {
-                     "Content-type": "application/json",
-               }
-    })
-    result = await result.json()
-    console.log('result:', result)
-    
-    localStorage.setItem("user", JSON.stringify(result))
 
-    alert("Signup successfully")
-    navigate("/login")
-    
-  
-}
+    let result = await fetch("http://localhost:5000/register", {
+      method: "POST",
+      body: JSON.stringify({ email, phone, password }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+    result = await result.json();
+    console.log("result:", result);
+
+    localStorage.setItem("user", JSON.stringify(result));
+
+    alert("Signup successfully");
+    navigate("/login");
+  };
 
   return (
     <>
@@ -52,9 +50,9 @@ const Register = () => {
               <div className="form-group col-md-3">
                 <label for="inputEmail4">Phone</label>
                 <input
-                   type="phone"
-                   value={phone}
-                   onChange={(e) => setPhone(e.target.value)}
+                  type="phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   className=" inputbox form-control"
                   placeholder="enter your phone number"
                 />
@@ -63,9 +61,9 @@ const Register = () => {
               <div className="form-group col-md-3">
                 <label for="inputEmail4">Password</label>
                 <input
-                   type="password"
-                   value={password}
-                   onChange={(e) => setPassword(e.target.value)}
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className=" inputbox form-control"
                   placeholder="enter your password"
                 />

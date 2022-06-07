@@ -21,7 +21,10 @@ const Login = () => {
     });
     result = await result.json();
     console.log("result:", result);
-    if (result.Message === "Either the email or the password you entered is not correct") {
+    if (
+      result.Message ===
+      "Either the email or the password you entered is not correct"
+    ) {
       alert("Email or Password is invalid!");
     } else {
       alert("Logged in successfully");
