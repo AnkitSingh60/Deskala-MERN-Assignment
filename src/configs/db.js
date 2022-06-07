@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
 const connect = ()=>{
-    return mongoose.connect("mongodb+srv://ankit:ankit@cluster0.u0eil.mongodb.net/E_COMMERCE_MERN")
+    return mongoose.connect(process.env.MONGO_URI)
 }
 module.exports = connect;
