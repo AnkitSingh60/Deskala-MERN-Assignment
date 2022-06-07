@@ -1,7 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const auth = localStorage.getItem("user");
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    navigate("/")
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
  
@@ -30,8 +38,13 @@ const Navbar = () => {
           </Link>
       </li>
     </ul>
+   
     
   </div>
+  <Link  onClick={logout} className="nav-link logout" to="/">
+            Logout 
+            
+          </Link>
 </nav>
   )
 }
